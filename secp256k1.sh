@@ -25,7 +25,7 @@ untarLzippedBundle() {
 exportConfig() {
   echo "Export configuration..."
   IOS_ARCH=$1
-  if [ "$IOS_ARCH" == "i386" ]; then
+  if [ "$IOS_ARCH" == "i386" ] || [ "$IOS_ARCH" == "x86_64" ]; then
     IOS_SYSROOT=$XCODE_SIMULATOR_SDK
   else
     IOS_SYSROOT=$XCODE_DEVICE_SDK
@@ -111,4 +111,3 @@ if [ "$ENV_ERROR" == "0" ]; then
 else
   echo "Build failed..."
 fi
-

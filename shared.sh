@@ -8,8 +8,7 @@
 
 # build architectures
 # BUILD_ARCHS="i386 armv7s armv7 arm64"
-BUILD_ARCHS="armv7s armv7 arm64 i386"
-#BUILD_ARCHS="i386"
+BUILD_ARCHS="armv7s armv7 arm64 i386 x86_64"
 
 # XCode directories
 : ${XCODE_ROOT:=`xcode-select -print-path`}
@@ -216,6 +215,7 @@ buildUniversalLib() {
       -arch armv7  "$BUILD_DIR/armv7/$LIBRARY" \
       -arch armv7s "$BUILD_DIR/armv7s/$LIBRARY" \
       -arch i386   "$BUILD_DIR/i386/$LIBRARY" \
+      -arch x86_64 "$BUILD_DIR/x86_64/$LIBRARY" \
       -arch arm64   "$BUILD_DIR/arm64/$LIBRARY" \
       -o           "$FRAMEWORK_INSTALL_NAME" \
   || abort "lipo failed"
