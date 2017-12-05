@@ -13,7 +13,8 @@
 : ${FRAMEWORK_IDENTIFIER:=org.secp256k1lib}
 
 # iphone SDK version
-: ${IPHONE_SDKVERSION:=11.1}
+# : ${IPHONE_SDKVERSION:=11.1}
+: ${IPHONE_SDKVERSION:=$(echo $(xcodebuild -showsdks) | grep -o  'iphonesimulator[0-9]\+.[0-9]\+' | grep -o  '[0-9]\+.[0-9]\+')}
 
 source shared.sh
 
@@ -22,7 +23,7 @@ untarLzippedBundle() {
   tar -zxvf secp256k1-1.0.0.tar.gz -C $SRC_DIR
   doneSection
 }
-
+[[ $(xcodebuild -showsdks | grep iOS ) =~ iphonesimulator11.1 ]] && echo matched
 exportConfig() {
   echo "Export configuration..."
   IOS_ARCH=$1
