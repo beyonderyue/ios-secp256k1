@@ -3,6 +3,7 @@
 # Bundle config
 : ${BUNDLE:=}
 : ${DOWNLOAD_URL:=}
+: ${GIT_URL:="git://github.com/bitcoin-core/secp256k1.git"}
 : ${LIBRARY:=libsecp256k1.a}
 
 # framework config
@@ -12,7 +13,7 @@
 : ${FRAMEWORK_IDENTIFIER:=org.secp256k1lib}
 
 # iphone SDK version
-: ${IPHONE_SDKVERSION:=9.1}
+: ${IPHONE_SDKVERSION:=11.1}
 
 source shared.sh
 
@@ -101,8 +102,9 @@ developerToolsPresent
 if [ "$ENV_ERROR" == "0" ]; then
   cleanUp
   createDirs
-  downloadSrc
-#  untarLzippedBundle
+  # downloadSrc
+ # untarLzippedBundle
+  gitCloneSrc
   compileSrcForAllArchs
   buildUniversalLib
   moveHeadersToFramework
