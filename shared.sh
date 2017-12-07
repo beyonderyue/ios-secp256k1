@@ -200,6 +200,15 @@ downloadSrc() {
   doneSection
 }
 
+gitCloneSrc() {
+  echo "CLong repo bitcoin-core/secp256k1"
+  if [ ! -e "$WORKING_DIR/secp256k1" ]; then
+    git clone git://github.com/bitcoin-core/secp256k1.git
+    mv ./secp256k1 ./
+  fi
+  doneSection
+}
+
 compileSrcForAllArchs() {
   for buildArch in $BUILD_ARCHS
   do

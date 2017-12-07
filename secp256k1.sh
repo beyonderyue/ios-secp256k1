@@ -103,9 +103,9 @@ developerToolsPresent
 if [ "$ENV_ERROR" == "0" ]; then
   cleanUp
   createDirs
-  downloadSrc
+  # downloadSrc
  # untarLzippedBundle
-#  untarLzippedBundle
+  gitCloneSrc
   compileSrcForAllArchs
   buildUniversalLib
   moveHeadersToFramework
