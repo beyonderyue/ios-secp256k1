@@ -120,7 +120,7 @@ developerToolsPresent () {
 
 createDirs () {
   echo "Create directories..."
-  [ -d $SRC_DIR ] || mkdir -p $SRC_DIR
+  [ -d $SRC_DIR ] || mkdir -p $SRC_DIR/$FRAMEWORK_NAME-$FRAMEWORK_CURRENT_VERSION
   [ -d $BUILD_DIR ] || mkdir -p $BUILD_DIR
   [ -d $FRAMEWORK_DIR ] || mkdir -p $FRAMEWORK_DIR
 
@@ -204,7 +204,9 @@ gitCloneSrc() {
   echo "CLong repo bitcoin-core/secp256k1"
   if [ ! -e "$WORKING_DIR/secp256k1" ]; then
     git clone git://github.com/bitcoin-core/secp256k1.git
-    mv ./secp256k1 ./
+  fi
+  if [ ! -e "$SRC_DIR/$FRAMEWORK_NAME-$FRAMEWORK_CURRENT_VERSION/autogen.sh" ]; then
+    cp -rv secp256k1/* $SRC_DIR/$FRAMEWORK_NAME-$FRAMEWORK_CURRENT_VERSION/
   fi
   doneSection
 }
