@@ -36,7 +36,7 @@ exportConfig() {
   if [ "$IOS_ARCH" == "armv7s" ] || [ "$IOS_ARCH" == "armv7" ]; then
     CFLAGS="$CFLAGS -mios-version-min=6.0"
   else
-    CFLAGS="$CFLAGS -mios-version-min=7.0"
+    CFLAGS="$CFLAGS -fembed-bitcode -mios-version-min=7.0"
   fi
   CXXFLAGS=$CFLAGS
   CPPFLAGS=$CFLAGS
