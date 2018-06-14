@@ -1,1 +1,9 @@
+# build files
+build
 framework
+src
+secp256k1
+
+# vim files
+*.swp
+*.swo
